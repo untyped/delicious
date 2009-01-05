@@ -1,0 +1,10 @@
+_Delicious: Client for the del.icio.us HTTP API_
+================================================
+
+By  Dave Gurnell (dave at untyped dot com)
+and Noel Welsh (noel at untyped dot com)
+
+Contributors (thanks for your support):
+    Eric Hanchrow 
+
+See doc/html/index.html for more information.
