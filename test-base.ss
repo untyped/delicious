@@ -1,15 +1,10 @@
-(module test-base mzscheme
+#lang scheme
 
-  (require (planet "test.ss" ("schematics" "schemeunit.plt" 2))
-           (planet "text-ui.ss" ("schematics" "schemeunit.plt" 2))
-           (planet "util.ss" ("schematics" "schemeunit.plt" 2)))
-  
-  (require (file "base.ss"))
-  
-  (provide (all-from (planet "test.ss" ("schematics" "schemeunit.plt" 2)))
-           (all-from (planet "text-ui.ss" ("schematics" "schemeunit.plt" 2)))
-           (all-from (planet "util.ss" ("schematics" "schemeunit.plt" 2))))
-  
-  (provide (all-from (file "base.ss")))
-           
-  )
+(require "base.ss")
+
+(require (schemeunit-in main text-ui util))
+
+; Provides ---------------------------------------
+
+(provide (all-from-out "base.ss")
+         (schemeunit-out main text-ui util))

@@ -4,14 +4,6 @@
 
 @title[#:tag "api"]{API Wrappers}
 
-@section{Special Values}
-
-@defthing[empty symbol]{
-
-The unique symbol @var{empty} is used to represent an unspecified argument to an API call (this is because some API calls take optional boolean arguments).
-
-}
-
 @section{Result Structures}
 
 The following structures are used to encapsulate data returned by API calls. The same structures can also optionally be used as arguments to some API calls:
@@ -120,9 +112,9 @@ Renames a tag and propagates the change to all related posts. For example:
 
 }
 
-@defproc[(get-posts [tag (U string empty) empty]
-                    [date (U srfi-19:date empty) empty]
-                    [url (U string empty) empty])
+@defproc[(get-posts [tag (U string void) void]
+                    [date (U srfi-19:date void) void]
+                    [url (U string void) void])
          (list-of post)]{
          
 Returns all posts matching the arguments:
@@ -132,12 +124,12 @@ Returns all posts matching the arguments:
   @item{@var[date] - filter by the specified post date;}
   @item{@var[url] - filter by the specified URL (must be an exact match).}}
 
-If all arguments are @var{empty}, posts are returned from the most recent day of posting.
+If all arguments are @var{void}, posts are returned from the most recent day of posting.
 
 }
 
-@defproc[(recent-posts [tag (U string empty) empty]
-                       [count (U integer empty) empty])
+@defproc[(recent-posts [tag (U string void) void]
+                       [count (U integer void) void])
          (list-of post)]{
          
 Returns a list of the most recent posts:
@@ -150,7 +142,7 @@ The default value of @var{count} is 15.
 
 }
 
-@defproc[(all-posts [tag (U string empty) empty]) (list-of post)]{
+@defproc[(all-posts [tag (U string void) void]) (list-of post)]{
 
 Returns all posts.
 
@@ -158,7 +150,7 @@ The @api-name documentation notes: "Please use sparingly. Call the update functi
 
 }
 
-@defproc[(post-dates [tag (U string empty) empty]) 
+@defproc[(post-dates [tag (U string void) void]) 
          (alist-of srfi-19:date integer)]{
 
 Returns an association list of post dates to number of posts made on that day.
@@ -166,8 +158,8 @@ Returns an association list of post dates to number of posts made on that day.
 }
 
 @defproc[(add-post! [post post] 
-                    [replace? (U boolean empty) empty]
-                    [shared? (U boolean empty) empty])
+                    [replace? (U boolean void) void]
+                    [shared? (U boolean void) void])
          void]{
          
 Creates a new post given a @var{post} structure.
@@ -177,17 +169,17 @@ Creates a new post given a @var{post} structure.
   @item{@var{replace?} - replace a previous post if the URL has already been posted: default no;}
   @item{@var{shared?} - make the post public: default no.}}
 
-This procedure delegates to @var[add-post/raw!] to do most of the work. Fields in the post are automatically mapped to @var[empty] when appropriate.
+This procedure delegates to @var[add-post/raw!] to do most of the work. Fields in the post are automatically mapped to @var[void] when appropriate.
 
 }
 
 @defproc[(add-post/raw! [url string]
                         [description string]
-                        [extended (U string empty) empty]
-                        [tags (U (list-of string) empty) empty]
-                        [date (U srfi-19:date empty) empty]
-                        [replace? (U boolean empty) empty]
-                        [shared? (U boolean empty) empty])
+                        [extended (U string void) void]
+                        [tags (U (list-of string) void) void]
+                        [date (U srfi-19:date void) void]
+                        [replace? (U boolean void) void]
+                        [shared? (U boolean void) void])
          void]{
          
 Creates a new post given the constituent parts of a @var{post} structure. @var{url}, @var{description}, @var{extended}, @var{tags} and @var{date} have the same purpose as the relevant fields of @var{post}.
