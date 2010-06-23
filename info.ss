@@ -2,7 +2,7 @@
 
 (define name "delicious")
 
-(define blurb '("A client for the del.icio.us HTTP API. See " (a ([href "http://del.icio.us/help/api/"]) "http://del.icio.us/help/api/") " for more information."))
+(define blurb '("Client for the del.icio.us HTTP API. See " (a ([href "http://del.icio.us/help/api/"]) "http://del.icio.us/help/api/") " for more information."))
 
 (define release-notes '("Fixed bug caused by adding posts with multiple tags, and added more detailed error messages."))
 
