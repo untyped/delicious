@@ -6,5 +6,6 @@
 
 ; Provides ---------------------------------------
 
-(provide (all-from-out "base.ss")
-         (schemeunit-out main text-ui util))
+(provide (all-from-out "base.ss"))
+
+(provide (schemeunit-out main text-ui util))
